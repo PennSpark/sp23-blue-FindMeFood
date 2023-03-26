@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+title
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block body %}
+<h1>hello, {{ user.username }}!</h1>
+<a href="/logout"><button>Logout</button></a>
+{% endblock %}

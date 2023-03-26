@@ -1,4 +1,4 @@
-#!/Users/jamesbaker/Desktop/spark_projs/sp23-blue-FindMeFood/backend/venv/bin/python3
+#!/Users/raribidesi/Desktop/Penn Spark/django-demo/blue-django-starter/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

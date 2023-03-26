@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/jamesbaker/Desktop/spark_projs/sp23-blue-FindMeFood/backend/venv"
+VIRTUAL_ENV="/Users/raribidesi/Desktop/sp23-blue-FindMeFood/backend/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
