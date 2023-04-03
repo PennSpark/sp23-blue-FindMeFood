@@ -20,7 +20,7 @@ export default function ReviewWriteupPage() {
         <Pressable onPress={() =>
             navigation.navigate('Home')
         }>
-            <FontAwesome name="arrow-left" size='50%' color='white' />
+            <FontAwesome name="arrow-left" style={Styles.side_icon} />
         </Pressable>
 
         <Text style={Styles.text}>REVIEW WRITEUP PAGE</Text>

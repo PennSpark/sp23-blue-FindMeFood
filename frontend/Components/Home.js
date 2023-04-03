@@ -1,40 +1,112 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, TextInput, FlatList, Button } from 'react-native';
 import Styles from './Styles.js';
 import { useNavigation } from '@react-navigation/native';
 
 import Ionicons from '@expo/vector-icons/Ionicons.js';
 
-import { useState } from 'react';
-import axios from 'axios';
+
+
+
+import React, { useState, useEffect } from 'react';
+import { postFormData, getFormData } from './api.js';
+  
+
 
 export default function Home() {
     const navigation = useNavigation();
 
-    const [posts, setPosts] = useState([]);
 
-    useEffect( () => {
-      axios.get("http://127.0.0.1:8000/splash/").then((res) => {
-        setPosts(res.data)
-        console.log(res.data)
-      }).catch((error) => {
-        console.log(error)
-      });
+
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [data, setData] = useState([]);
+
+    const handleSubmit = async () => {
+      const formData = { name, email, message };
+      const response = await postFormData(formData);
+      if (response && response.status === 'success') {
+        alert('Form submitted successfully!');
+        setName('');
+        setEmail('');
+        setMessage('');
+        fetchData();
+      } else {
+        alert('Form submission failed. Please try again.');
+      }
+    };
+  
+    const fetchData = async () => {
+      const response = await getFormData();
+      if (response && Array.isArray(response)) {
+        setData(response);
+      }
+    };
+  
+    useEffect(() => {
+      fetchData();
     }, []);
+  
+    const renderItem = ({ item }) => (
+      <View style={Styles.item}>
+        <Text>{item.name}</Text>
+        <Text>{item.email}</Text>
+        <Text>{item.message}</Text>
+        <Text>{item.created_at}</Text>
+      </View>
+    );
+
 
     return (
       <View>
+
         <Pressable onPress={() =>
                 navigation.navigate('Profile', {name: 'Jane'})
-            }>
-                <Ionicons name="person-circle-outline" size='50%' color='white' />
-          </Pressable>
-
-        {posts.map((post) => {
-          <Text>Username: {post.username}</Text>
-        })}
-        
+          }>
+                <Ionicons style={Styles.side_icon} name="person-circle-outline" />
+        </Pressable>        
+          
         <Text style={Styles.text}>HOME PAGE COMPONENT</Text>
+
+        <View style={Styles.form}>
+          <Text style={Styles.label}>Name:</Text>
+          <TextInput
+            style={Styles.input}
+            value={name}
+            onChangeText={setName}
+          />
+          <Text style={Styles.label}>Email:</Text>
+          <TextInput
+            style={Styles.input}
+            value={email}
+            onChangeText={setEmail}
+          />
+          <Text style={Styles.label}>Message:</Text>
+          <TextInput
+            style={Styles.input}
+            value={message}
+            onChangeText={setMessage}
+          />
+          <Button
+            title="Submit"
+            onPress={handleSubmit}
+          />
+        </View>
+        <View style={Styles.list}>
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </View>
+
+
+
+        
       </View>
     );
+    
+    
     
 }

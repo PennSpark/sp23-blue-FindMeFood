@@ -13,7 +13,7 @@ export default function Profile() {
         <Pressable onPress={() =>
             navigation.navigate('Home')
         }>
-            <FontAwesome name="arrow-left" size='50%' color='white' />
+            <FontAwesome name="arrow-left" style={Styles.side_icon} />
         </Pressable>
 
         <Text style={Styles.text}>PROFILE PAGE COMPONENT</Text>

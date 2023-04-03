@@ -27,17 +27,17 @@ export default function Navbar() {
             <Pressable onPress={() =>
                 navigation.navigate('Search')
             }>
-                <FontAwesome name="search" size='50%' color='white' />
+                <FontAwesome name="search" style={Styles.side_icon} />
             </Pressable>
             <View style={Styles.home_background}>
                 <Pressable onPress={changeBackground}>
-                    <FontAwesome name="home" size='70%' color='white'/>
+                    <FontAwesome name="home" style={Styles.main_icon}/>
                 </Pressable>
             </View>
             <Pressable onPress={() =>
                 navigation.navigate('Review Writeup')
             }>
-                <FontAwesome name="star" size='50%' color='white' />
+                <FontAwesome name="star" style={Styles.side_icon} />
             </Pressable>
             {/*<Button></Button>*/}
         </View>

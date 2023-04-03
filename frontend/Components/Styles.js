@@ -42,10 +42,38 @@ export default StyleSheet.create({
       borderRadius: 15,
     },
 
+
+    form: {
+      
+      
+      
+      backgroundColor: 'white',
+    },
+
+
+    smol: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: "50%",
+      height: "10%",
+      backgroundColor: 'rgba(59, 57, 73, 1.0)',
+      borderRadius: 25,
+      alignItems: 'center',
+    },
+
     text: {
       backgroundColor: 'transparent',
       fontSize: "18%",
       color: '#fff',
+    },
+    main_icon: {
+      fontSize: '70%',
+      color: 'white',
+    },
+    side_icon: {
+      fontSize: '50%',
+      color: 'white',
     },
     button: {
       backgroundColor: 'pink',
