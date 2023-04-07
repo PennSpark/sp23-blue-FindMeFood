@@ -5,21 +5,18 @@ const api = axios.create({
 });
 
 
-export const postFormData = async (data) => {
+export const postFormData = async (address, data) => {
   try {
-    console.log("hi")
-    console.log(data)
-    const response = await api.post('/post-data/', data);
+    const response = await api.post(String(address), data);
     return response.data;
   } catch (error) {
-    console.log("bye")
     console.error(error.message);
   }
 };
 
-export const getFormData = async () => {
+export const getFormData = async (address) => {
   try {
-    const response = await api.get('/get-data/');
+    const response = await api.get(String(address));
     return response.data;
   } catch (error) {
     console.error(error);

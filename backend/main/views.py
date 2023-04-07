@@ -40,11 +40,11 @@ def logout_view(request):
 
 
 from django.http import JsonResponse
-from .models import UserModel
+from .models import UserModel, FoodTruckModel
 import json
 
 @csrf_exempt
-def post_data(request):
+def post_user(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         name = data.get('name')
@@ -58,7 +58,7 @@ def post_data(request):
     else:
         return JsonResponse({'status': 'error'})
 @csrf_exempt
-def get_data(request):
+def get_user(request):
     if request.method == 'GET':
         data = list(UserModel.objects.values())
         return JsonResponse(data, safe=False)
@@ -66,3 +66,22 @@ def get_data(request):
         return JsonResponse({'status': 'error'})
 
     
+@csrf_exempt
+def post_foodtruck(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        name = data.get('name')
+        if name:
+            FoodTruckModel.objects.create(name=name)
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'status': 'error'})
+    else:
+        return JsonResponse({'status': 'error'})
+@csrf_exempt
+def get_foodtruck(request):
+    if request.method == 'GET':
+        data = list(FoodTruckModel.objects.values())
+        return JsonResponse(data, safe=False)
+    else:
+        return JsonResponse({'status': 'error'})

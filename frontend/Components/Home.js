@@ -23,29 +23,29 @@ export default function Home() {
     const [message, setMessage] = useState('');
     const [data, setData] = useState([]);
 
-    const handleSubmit = async () => {
+    const handleSubmitUser = async () => {
       const formData = { name, email, message };
-      const response = await postFormData(formData);
+      const response = await postFormData('/post-user/', formData);
       if (response && response.status === 'success') {
         alert('Form submitted successfully!');
         setName('');
         setEmail('');
         setMessage('');
-        fetchData();
+        fetchDataUser();
       } else {
         alert('Form submission failed. Please try again.');
       }
     };
   
-    const fetchData = async () => {
-      const response = await getFormData();
+    const fetchDataUser = async () => {
+      const response = await getFormData('/get-user/');
       if (response && Array.isArray(response)) {
         setData(response);
       }
     };
   
     useEffect(() => {
-      fetchData();
+      fetchDataUser();
     }, []);
   
     const renderItem = ({ item }) => (
@@ -90,7 +90,7 @@ export default function Home() {
           />
           <Button
             title="Submit"
-            onPress={handleSubmit}
+            onPress={handleSubmitUser}
           />
         </View>
         <View style={Styles.list}>

@@ -1,12 +1,35 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Styles from './Styles.js';
 
 import { useNavigation } from '@react-navigation/native';
-import FontAwesome from '@expo/vector-icons/FontAwesome.js'
+import FontAwesome from '@expo/vector-icons/FontAwesome.js';
+
+import React, { useState, useEffect } from 'react';
+import { getFormData } from './api.js';
 
 export default function SearchPage() {
     const navigation = useNavigation();
+
+    const [name, setName] = useState('');
+    const [data, setData] = useState([]);
+  
+    const fetchDataFoodTruck = async () => {
+      const response = await getFormData('/get-foodtruck/');
+      if (response && Array.isArray(response)) {
+        setData(response);
+      }
+    };
+  
+    useEffect(() => {
+      fetchDataFoodTruck();
+    }, []);
+
+    const renderItem = ({ item }) => (
+        <View style={Styles.item}>
+          <Text>{item.name}</Text>
+        </View>
+    );
 
     return (
       <View style={Styles.container}>
@@ -24,6 +47,14 @@ export default function SearchPage() {
         </Pressable>
 
         <Text style={Styles.text}>SEARCH PAGE</Text>
+
+        <View style={Styles.list}>
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </View>
       </View>
     );
 }
