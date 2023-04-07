@@ -2,6 +2,7 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Styles from './Styles.js';
 import FontAwesome from '@expo/vector-icons/FontAwesome.js';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5.js';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons.js';
 
 import { useNavigation } from '@react-navigation/native';
@@ -31,7 +32,7 @@ export default function SearchLanding() {
             <Pressable onPress={() =>
                 navigation.navigate('SearchUser')
             }>
-                <MaterialIcons name="rate-review" style={Styles.side_icon} />
+                <FontAwesome5 name="users" style={Styles.side_icon} />
                 <Text style={Styles.text}>Search users</Text>
             </Pressable>
             
