@@ -8,8 +8,6 @@ urlpatterns = [
     path('login/', views.login_view, name = 'login_view'),
     path('signup/', views.signup_view, name = 'signup_view'),
     path('logout/', views.logout_view, name='logout_view'),
-    path('mymodels/', views.MyModelList.as_view(), name='mymodel_list'),
-    path('mymodels/<int:pk>/', views.MyModelDetail.as_view(), name='mymodel_detail'),
 
     path('post-data/', views.post_data, name='post_data'),
     path('get-data/', views.get_data, name='get_data'),

@@ -1,8 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import BgNavFrame from './Components/BgNavFrame.js';
 import SearchPage from './Components/SearchPage.js';
-import ReviewWriteupPage from './Components/ReviewWriteupPage.js';
+import PostsLanding from './Components/PostsLanding.js';
+import AddFoodTruck from './Components/AddFoodTruck.js';
+import ReviewWriteup from './Components/ReviewWriteup.js'
 import Home from './Components/Home.js';
 import Profile from './Components/Profile.js';
 
@@ -34,7 +37,21 @@ export default function App() {
           }}
         />
         <Stack.Screen 
-          name='Review Writeup' 
+          name='PostsLanding' 
+          component={PostsLandingScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen 
+          name='AddFoodTruck' 
+          component={AddFoodTruckScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen 
+          name='ReviewWriteup' 
           component={ReviewWriteupScreen} 
           options={{
             headerShown: false,
@@ -60,8 +77,19 @@ const SearchScreen = ({navigation}) => {
     <SearchPage/>
   );
 };
-const ReviewWriteupScreen = ({navigation}) => {
+const PostsLandingScreen = ({navigation}) => {
   return (
-    <ReviewWriteupPage/>
+    <PostsLanding/>
   );
 };
+const AddFoodTruckScreen = ({navigation}) => {
+  return (
+    <AddFoodTruck/>
+  );
+};
+const ReviewWriteupScreen = ({navigation}) => {
+  return (
+    <ReviewWriteup/>
+  );
+};
+

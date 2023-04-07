@@ -1,11 +1,11 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Styles from './Styles.js';
-import FontAwesome from '@expo/vector-icons/FontAwesome.js';
 
 import { useNavigation } from '@react-navigation/native';
+import FontAwesome from '@expo/vector-icons/FontAwesome.js'
 
-export default function ReviewWriteupPage() {
+export default function AddFoodTruck() {
     const navigation = useNavigation();
 
     return (
@@ -18,12 +18,12 @@ export default function ReviewWriteupPage() {
         />
 
         <Pressable onPress={() =>
-            navigation.navigate('Home')
+            navigation.navigate('PostsLanding')
         }>
             <FontAwesome name="arrow-left" style={Styles.side_icon} />
         </Pressable>
 
-        <Text style={Styles.text}>REVIEW WRITEUP PAGE</Text>
+        <Text style={Styles.text}>add food truck PAGE</Text>
       </View>
     );
 }

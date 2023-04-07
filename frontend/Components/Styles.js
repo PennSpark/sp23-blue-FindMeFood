@@ -69,7 +69,7 @@ export default StyleSheet.create({
     },
     main_icon: {
       fontSize: '70%',
-      color: 'white',
+      color: '#C282FA',
     },
     side_icon: {
       fontSize: '50%',

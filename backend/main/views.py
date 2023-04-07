@@ -4,16 +4,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import generics
-from .models import MyModel
-from .serializers import MyModelSerializer
-
-class MyModelList(generics.ListCreateAPIView):
-    queryset = MyModel.objects.all()
-    serializer_class = MyModelSerializer
-
-class MyModelDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = MyModel.objects.all()
-    serializer_class = MyModelSerializer
 
 def main_view(request):
     return render(request, 'main.html' )
@@ -50,7 +40,7 @@ def logout_view(request):
 
 
 from django.http import JsonResponse
-from .models import TestModel
+from .models import UserModel
 import json
 
 @csrf_exempt
@@ -61,7 +51,7 @@ def post_data(request):
         email = data.get('email')
         message = data.get('message')
         if name and email and message:
-            TestModel.objects.create(name=name, email=email, message=message)
+            UserModel.objects.create(name=name, email=email, message=message)
             return JsonResponse({'status': 'success'})
         else:
             return JsonResponse({'status': 'error'})
@@ -70,7 +60,7 @@ def post_data(request):
 @csrf_exempt
 def get_data(request):
     if request.method == 'GET':
-        data = list(TestModel.objects.values())
+        data = list(UserModel.objects.values())
         return JsonResponse(data, safe=False)
     else:
         return JsonResponse({'status': 'error'})

@@ -1,12 +1,5 @@
 from django.db import models
 
-class MyModel(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-
-
 # Create your models here.
 class FoodTruck(models.Model):
     """Model representing a book genre."""
@@ -20,9 +13,7 @@ class FoodTruck(models.Model):
 
 
 
-
-
-class TestModel(models.Model):
+class UserModel(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()

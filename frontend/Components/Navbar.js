@@ -35,7 +35,7 @@ export default function Navbar() {
                 </Pressable>
             </View>
             <Pressable onPress={() =>
-                navigation.navigate('Review Writeup')
+                navigation.navigate('PostsLanding')
             }>
                 <FontAwesome name="star" style={Styles.side_icon} />
             </Pressable>
