@@ -25,7 +25,7 @@ export default function Navbar() {
         
         <View style={Styles.nav_flexbox}>
             <Pressable onPress={() =>
-                navigation.navigate('Search')
+                navigation.navigate('SearchLanding')
             }>
                 <FontAwesome name="search" style={Styles.side_icon} />
             </Pressable>

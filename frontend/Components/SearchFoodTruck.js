@@ -8,7 +8,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome.js';
 import React, { useState, useEffect } from 'react';
 import { getFormData } from './api.js';
 
-export default function SearchPage() {
+export default function SearchFoodTruck() {
     const navigation = useNavigation();
 
     const [name, setName] = useState('');
@@ -27,7 +27,7 @@ export default function SearchPage() {
 
     const renderItem = ({ item }) => (
         <View style={Styles.item}>
-          <Text>{item.name}</Text>
+          <Text style={Styles.text}>{item.name}</Text>
         </View>
     );
 
@@ -40,13 +40,16 @@ export default function SearchPage() {
           locations={[0.01, 0.9]}
         />
 
+        <View height='100%'>
+        </View>
+
         <Pressable onPress={() =>
-            navigation.navigate('Home')
+            navigation.navigate('SearchLanding')
         }>
             <FontAwesome name="arrow-left" style={Styles.side_icon} />
         </Pressable>
 
-        <Text style={Styles.text}>SEARCH PAGE</Text>
+        <Text style={Styles.text}>SEARCH FOOD TRUCK PAGE</Text>
 
         <View style={Styles.list}>
           <FlatList

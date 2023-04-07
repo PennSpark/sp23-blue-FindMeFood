@@ -2,7 +2,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BgNavFrame from './Components/BgNavFrame.js';
-import SearchPage from './Components/SearchPage.js';
+import SearchLanding from './Components/SearchLanding.js';
+import SearchUser from './Components/SearchUser.js';
+import SearchFoodTruck from './Components/SearchFoodTruck.js';
 import PostsLanding from './Components/PostsLanding.js';
 import AddFoodTruck from './Components/AddFoodTruck.js';
 import ReviewWriteup from './Components/ReviewWriteup.js'
@@ -30,13 +32,6 @@ export default function App() {
           }}
         />
         <Stack.Screen 
-          name='Search' 
-          component={SearchScreen} 
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen 
           name='PostsLanding' 
           component={PostsLandingScreen} 
           options={{
@@ -57,6 +52,27 @@ export default function App() {
             headerShown: false,
           }}
         />
+        <Stack.Screen 
+          name='SearchLanding' 
+          component={SearchLandingScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen 
+          name='SearchFoodTruck' 
+          component={SearchFoodTruckScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen 
+          name='SearchUser' 
+          component={SearchUserScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -72,9 +88,19 @@ const ProfileScreen = ({navigation, route}) => {
     <BgNavFrame subpage={Profile()}/>
   );
 }; 
-const SearchScreen = ({navigation}) => {
+const SearchLandingScreen = ({navigation}) => {
   return (
-    <SearchPage/>
+    <SearchLanding/>
+  );
+};
+const SearchUserScreen = ({navigation}) => {
+  return (
+    <SearchUser/>
+  );
+};
+const SearchFoodTruckScreen = ({navigation}) => {
+  return (
+    <SearchFoodTruck/>
   );
 };
 const PostsLandingScreen = ({navigation}) => {

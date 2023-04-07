@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const uri = 'https://a984-2607-f470-6-1001-8548-d3d9-840a-8312.ngrok.io/';
+
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000/', // replace with your Django server address
+  baseURL: uri, // replace with your Django server address
 });
 
 

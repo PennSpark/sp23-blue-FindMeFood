@@ -44,9 +44,6 @@ export default StyleSheet.create({
 
 
     form: {
-      
-      
-      
       backgroundColor: 'white',
     },
 
@@ -78,5 +75,12 @@ export default StyleSheet.create({
     button: {
       backgroundColor: 'pink',
       width: "20%"
+    },
+
+    item: {
+      color: 'white',
+    },
+    list: {
+      color: 'white',
     },
 })
