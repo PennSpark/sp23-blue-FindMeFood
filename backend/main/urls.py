@@ -14,4 +14,7 @@ urlpatterns = [
 
     path('post-foodtruck/', views.post_foodtruck, name='post_foodtruck'),
     path('get-foodtruck/', views.get_foodtruck, name='get_foodtruck'),
+
+    path('post-review/', views.post_review, name='post_review'),
+    path('get-review/', views.get_review, name='get_review'),
 ]

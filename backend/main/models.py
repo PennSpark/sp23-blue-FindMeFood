@@ -11,4 +11,9 @@ class UserModel(models.Model):
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+class ReviewModel(models.Model):
+    food_truck = models.CharField(max_length=100)
+    rating = models.IntegerField()
+    desc = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
  

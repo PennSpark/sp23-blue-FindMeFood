@@ -59,6 +59,10 @@ export default StyleSheet.create({
       alignItems: 'center',
     },
 
+    test_box: {
+
+    },
+
     text: {
       backgroundColor: 'transparent',
       fontSize: "18%",

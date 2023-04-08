@@ -52,6 +52,7 @@ export default function AddFoodTruck() {
           locations={[0.01, 0.9]}
         />
 
+       <View style={Styles.test_box}>
         <Pressable onPress={() =>
             navigation.navigate('PostsLanding')
         }>
@@ -72,6 +73,7 @@ export default function AddFoodTruck() {
             onPress={handleSubmitFoodTruck}
           />
         </View>
+       </View>
       </View>
     );
 }

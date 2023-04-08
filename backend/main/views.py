@@ -40,7 +40,7 @@ def logout_view(request):
 
 
 from django.http import JsonResponse
-from .models import UserModel, FoodTruckModel
+from .models import UserModel, FoodTruckModel, ReviewModel
 import json
 
 @csrf_exempt
@@ -82,6 +82,29 @@ def post_foodtruck(request):
 def get_foodtruck(request):
     if request.method == 'GET':
         data = list(FoodTruckModel.objects.values())
+        return JsonResponse(data, safe=False)
+    else:
+        return JsonResponse({'status': 'error'})
+    
+
+@csrf_exempt
+def post_review(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        food_truck = data.get('food_truck')
+        rating = data.get('rating')
+        desc = data.get('desc')
+        if food_truck and rating and desc:
+            ReviewModel.objects.create(food_truck=food_truck, rating=rating, desc=desc)
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'status': 'error'})
+    else:
+        return JsonResponse({'status': 'error'})
+@csrf_exempt
+def get_review(request):
+    if request.method == 'GET':
+        data = list(ReviewModel.objects.values())
         return JsonResponse(data, safe=False)
     else:
         return JsonResponse({'status': 'error'})
