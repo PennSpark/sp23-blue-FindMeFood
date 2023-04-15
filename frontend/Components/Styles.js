@@ -62,6 +62,7 @@ export default StyleSheet.create({
     test_box: {
       flex: 1,
       borderColor: "black",
+      top: '15%',
     },
 
     text: {

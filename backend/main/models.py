@@ -8,7 +8,7 @@ class FoodTruckModel(models.Model):
     name = models.CharField(max_length=100, help_text='Enter a food truck name (e.g. Don Memos)')
     # more food truck parameters here
     location = models.CharField(max_length=200, help_text='Enter food truck location', null = True, blank = True)
-    menu_item = models.ImageField(null = True)
+    menu = models.ImageField(null = True)
 
 class UserModel(models.Model):
     name = models.CharField(max_length=100)

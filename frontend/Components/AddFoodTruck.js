@@ -1,4 +1,4 @@
-import { View, Text, Pressable, TextInput, Button, FlatList } from 'react-native';
+import { View, Text, Pressable, TextInput, Button, FlatList, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Styles from './Styles.js';
 
@@ -8,18 +8,25 @@ import FontAwesome from '@expo/vector-icons/FontAwesome.js';
 import React, { useState, useEffect } from 'react';
 import { postFormData, getFormData } from './api.js';
 
+import * as ImagePicker from 'expo-image-picker';
+
 export default function AddFoodTruck() {
     const navigation = useNavigation();
 
     const [name, setName] = useState('');
+    const [location, setLocation] = useState('');
+    const [menu, setMenu] = useState('');
     const [data, setData] = useState([]);
 
     const handleSubmitFoodTruck = async () => {
-      const formData = { name };
+      const formData = { name, location, menu };
       const response = await postFormData('/post-foodtruck/', formData);
+      console.log(response)
       if (response && response.status === 'success') {
         alert('Form submitted successfully!');
         setName('');
+        setLocation('');
+        setMenu(image);
         fetchDataFoodTruck();
       } else {
         alert('Form submission failed. Please try again.');
@@ -42,6 +49,25 @@ export default function AddFoodTruck() {
           <Text>{item.name}</Text>
         </View>
     );
+
+    const [image, setImage] = useState('');
+
+    const pickImage = async () => {
+      // No permissions request is necessary for launching the image library
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+  
+      console.log(result);
+  
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+        setMenu(result.assets[0].uri)
+      }
+    };
 
     return (
       <View style={Styles.container}>
@@ -68,10 +94,23 @@ export default function AddFoodTruck() {
             value={name}
             onChangeText={setName}
           />
+          <Text style={Styles.label}>Location:</Text>
+          <TextInput
+            style={Styles.input}
+            value={location}
+            onChangeText={setLocation}
+          />
+          <Text style={Styles.label}>Menu:</Text>
+          <Button title="Pick an image from camera roll" onPress={pickImage} />
           <Button
             title="Submit"
             onPress={handleSubmitFoodTruck}
           />
+        </View>
+
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          
+          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
         </View>
        </View>
       </View>
