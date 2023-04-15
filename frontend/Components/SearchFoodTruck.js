@@ -25,9 +25,10 @@ export default function SearchFoodTruck() {
     }, []);
 
     const renderItem = ({ item }) => (
-        <View style={Styles.item}>
-          <Text style={Styles.text}>{item.name}</Text>
-          {item.menu && <Image source={{ uri: item.menu }} style={{ width: 200, height: 200 }} />}
+        <View style={Styles.ft_item}>
+          {item.menu && <Image source={{ uri: item.menu }} style={Styles.ft_item_img} />}
+          <Text style={Styles.ft_item_text_name}>{item.name}</Text>
+          <Text style={Styles.ft_item_text_location}>{item.location}</Text>
         </View>
     );
 
@@ -40,22 +41,28 @@ export default function SearchFoodTruck() {
           locations={[0.01, 0.9]}
         />
 
-        <View height='100%'>
+        <View height='17%'>
         </View>
 
-        <Pressable onPress={() =>
+        <View style={Styles.page_header}>
+          <Pressable onPress={() =>
             navigation.navigate('SearchLanding')
-        }>
+          }>
             <FontAwesome name="arrow-left" style={Styles.side_icon} />
-        </Pressable>
+          </Pressable>
 
-        <Text style={Styles.text}>SEARCH FOOD TRUCK PAGE</Text>
+          <Text style={Styles.text}>SEARCH FOOD TRUCK PAGE</Text>
+        </View> 
 
         <View style={Styles.list}>
           <FlatList
             data={data}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
+            contentContainerStyle={{paddingTop: '18%'}}
+            ItemSeparatorComponent={() => <View style={{height: '7%'}} />}
+            showsVerticalScrollIndicator={false}
+            // onPress={() => this._onPress(item)}
           />
         </View>
       </View>

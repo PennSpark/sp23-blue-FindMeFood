@@ -83,10 +83,47 @@ export default StyleSheet.create({
       width: "20%"
     },
 
-    item: {
-      color: 'white',
+    page_header: {
+      flexDirection: 'row',
+      height: '10%',
+      width: '100%',
+      borderBottomColor: 'white',
+      borderBottomWidth: '2%',
+
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingLeft: '10%',
+      paddingRight: '10%',
     },
+
+    ft_item: {
+      justifyContent: 'space-between',
+      padding: '3%',
+      borderColor: 'white',
+      borderWidth: '2%',
+      borderRadius: '10%',
+      backgroundColor: 'rgba(57, 55, 72, 1.0)',
+    },
+    ft_item_text_name: {
+      fontSize: '30%',
+      backgroundColor: 'transparent',
+      color: '#fff',
+    },
+    ft_item_text_location: {
+      backgroundColor: 'transparent',
+      fontSize: "18%",
+      color: '#fff',
+    },
+    ft_item_img: {
+      width: 200, 
+      height: 200,
+    },
+
+    
+
     list: {
       color: 'white',
+      paddingLeft: '10%',
+      paddingRight: '10%',
     },
 })
