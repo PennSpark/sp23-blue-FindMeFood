@@ -92,10 +92,11 @@ def post_review(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         food_truck = data.get('food_truck')
+        author = data.get('author')
         rating = data.get('rating')
         desc = data.get('desc')
-        if food_truck and rating and desc:
-            ReviewModel.objects.create(food_truck=food_truck, rating=rating, desc=desc)
+        if food_truck and rating and desc and author:
+            ReviewModel.objects.create(food_truck=food_truck, author=author, rating=rating, desc=desc)
             return JsonResponse({'status': 'success'})
         else:
             return JsonResponse({'status': 'error'})

@@ -13,6 +13,7 @@ class UserModel(models.Model):
 
 class ReviewModel(models.Model):
     food_truck = models.CharField(max_length=100)
+    author = models.CharField(default='Anon', max_length=50)
     rating = models.IntegerField()
     desc = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
