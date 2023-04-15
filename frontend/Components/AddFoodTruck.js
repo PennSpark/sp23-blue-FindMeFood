@@ -102,6 +102,7 @@ export default function AddFoodTruck() {
           />
           <Text style={Styles.label}>Menu:</Text>
           <Button title="Pick an image from camera roll" onPress={pickImage} />
+          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
           <Button
             title="Submit"
             onPress={handleSubmitFoodTruck}
@@ -110,7 +111,6 @@ export default function AddFoodTruck() {
 
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           
-          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
         </View>
        </View>
       </View>

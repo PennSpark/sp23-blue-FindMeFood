@@ -1,4 +1,4 @@
-import { View, Text, Pressable, FlatList } from 'react-native';
+import { View, Text, Pressable, FlatList, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Styles from './Styles.js';
 
@@ -11,7 +11,6 @@ import { getFormData } from './api.js';
 export default function SearchFoodTruck() {
     const navigation = useNavigation();
 
-    const [name, setName] = useState('');
     const [data, setData] = useState([]);
   
     const fetchDataFoodTruck = async () => {
@@ -28,6 +27,7 @@ export default function SearchFoodTruck() {
     const renderItem = ({ item }) => (
         <View style={Styles.item}>
           <Text style={Styles.text}>{item.name}</Text>
+          {item.menu && <Image source={{ uri: item.menu }} style={{ width: 200, height: 200 }} />}
         </View>
     );
 
