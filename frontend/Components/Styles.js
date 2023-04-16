@@ -98,7 +98,8 @@ export default StyleSheet.create({
 
     ft_item: {
       justifyContent: 'space-between',
-      padding: '3%',
+      //alignItems: 'center',
+      padding: '4%',
       borderColor: 'white',
       borderWidth: '2%',
       borderRadius: '10%',
@@ -119,11 +120,13 @@ export default StyleSheet.create({
       height: 200,
     },
 
-    
-
     list: {
       color: 'white',
       paddingLeft: '10%',
       paddingRight: '10%',
+    },
+
+    upload_btn: {
+      backgroundColor: 'grey',
     },
 })

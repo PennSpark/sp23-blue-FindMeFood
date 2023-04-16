@@ -101,7 +101,7 @@ export default function AddFoodTruck() {
             onChangeText={setLocation}
           />
           <Text style={Styles.label}>Menu:</Text>
-          <Button title="Pick an image from camera roll" onPress={pickImage} />
+          <Button style={Styles.upload_btn} title="Pick an image from camera roll" onPress={pickImage} />
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
           <Button
             title="Submit"

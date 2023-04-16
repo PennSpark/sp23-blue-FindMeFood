@@ -59,9 +59,10 @@ export default function SearchFoodTruck() {
             data={data}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
-            contentContainerStyle={{paddingTop: '18%'}}
-            ItemSeparatorComponent={() => <View style={{height: '7%'}} />}
+            contentContainerStyle={{paddingTop: '18%', paddingBottom: '132%' }}
+            ItemSeparatorComponent={() => <View style={{height: '6%'}} />}
             showsVerticalScrollIndicator={false}
+            ListFooterComponent={() => <Text></Text>}
             // onPress={() => this._onPress(item)}
           />
         </View>
