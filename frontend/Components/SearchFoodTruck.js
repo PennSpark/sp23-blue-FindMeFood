@@ -51,7 +51,7 @@ export default function SearchFoodTruck() {
             <FontAwesome name="arrow-left" style={Styles.side_icon} />
           </Pressable>
 
-          <Text style={Styles.text}>SEARCH FOOD TRUCK PAGE</Text>
+          <Text style={Styles.text}>Find a Food Truck</Text>
         </View> 
 
         <View style={Styles.list}>

@@ -5,6 +5,7 @@ import BgNavFrame from './Components/BgNavFrame.js';
 import SearchLanding from './Components/SearchLanding.js';
 import SearchUser from './Components/SearchUser.js';
 import SearchFoodTruck from './Components/SearchFoodTruck.js';
+import SearchReview from './Components/SearchReview.js';
 import PostsLanding from './Components/PostsLanding.js';
 import AddFoodTruck from './Components/AddFoodTruck.js';
 import ReviewWriteup from './Components/ReviewWriteup.js'
@@ -73,6 +74,13 @@ export default function App() {
             headerShown: false,
           }}
         />
+        <Stack.Screen 
+          name='SearchReview' 
+          component={SearchReviewScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -101,6 +109,11 @@ const SearchUserScreen = ({navigation}) => {
 const SearchFoodTruckScreen = ({navigation}) => {
   return (
     <SearchFoodTruck/>
+  );
+};
+const SearchReviewScreen = ({navigation}) => {
+  return (
+    <SearchReview/>
   );
 };
 const PostsLandingScreen = ({navigation}) => {

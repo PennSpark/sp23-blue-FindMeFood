@@ -129,4 +129,9 @@ export default StyleSheet.create({
     upload_btn: {
       backgroundColor: 'grey',
     },
+
+    map: {
+      width: '100%',
+      height: '70%',
+    },
 })

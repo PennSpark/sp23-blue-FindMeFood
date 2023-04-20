@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Styles from './Styles.js';
 import FontAwesome from '@expo/vector-icons/FontAwesome.js';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5.js';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons.js';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons.js';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -25,10 +25,12 @@ export default function SearchLanding() {
             <FontAwesome name="arrow-left" style={Styles.side_icon} />
         </Pressable>
 
-        <Text style={Styles.text}>SearchLandingPage</Text>
+        <Text style={Styles.text}>Search</Text>
+
+        <View height='10%'/>
 
 
-        <View style={Styles.nav_flexbox}>
+        <View>
             <Pressable onPress={() =>
                 navigation.navigate('SearchUser')
             }>
@@ -40,7 +42,14 @@ export default function SearchLanding() {
                 navigation.navigate('SearchFoodTruck')
             }>
                 <FontAwesome name="truck" style={Styles.side_icon} />
-                <Text style={Styles.text}>Search food trucks</Text>
+                <Text style={Styles.text}>Registered food trucks</Text>
+            </Pressable>
+
+            <Pressable onPress={() =>
+                navigation.navigate('SearchReview')
+            }>
+                <MaterialCommunityIcons name="comment-search" style={Styles.side_icon} />
+                <Text style={Styles.text}>Recent reviews</Text>
             </Pressable>
             {/*<Button></Button>*/}
         </View>

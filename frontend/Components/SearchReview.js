@@ -8,27 +8,28 @@ import FontAwesome from '@expo/vector-icons/FontAwesome.js';
 import React, { useState, useEffect } from 'react';
 import { getFormData } from './api.js';
 
-export default function SearchUser() {
+export default function SearchReview() {
     const navigation = useNavigation();
 
     const [data, setData] = useState([]);
   
-    const fetchDataUser = async () => {
-      const response = await getFormData('/get-user/');
+    const fetchDataReview = async () => {
+      const response = await getFormData('/get-review/');
       if (response && Array.isArray(response)) {
         setData(response);
       }
     };
   
     useEffect(() => {
-      fetchDataUser();
+      fetchDataReview();
     }, []);
   
     const renderItem = ({ item }) => (
       <View style={Styles.ft_item}>
-        <Text style={Styles.text}>{item.name}</Text>
-        <Text style={Styles.text}>{item.email}</Text>
-        <Text style={Styles.text}>{item.message}</Text>
+        <Text style={Styles.text}>{item.food_truck}</Text>
+        <Text style={Styles.text}>{item.author}</Text>
+        <Text style={Styles.text}>{item.rating}</Text>
+        <Text style={Styles.text}>{item.desc}</Text>
         <Text style={Styles.text}>{item.created_at}</Text>
       </View>
     );
@@ -52,7 +53,7 @@ export default function SearchUser() {
             <FontAwesome name="arrow-left" style={Styles.side_icon} />
           </Pressable>
 
-          <Text style={Styles.text}>Recently Registered Users</Text>
+          <Text style={Styles.text}>Recent Reviews</Text>
         </View>
 
         <View style={Styles.list}>
