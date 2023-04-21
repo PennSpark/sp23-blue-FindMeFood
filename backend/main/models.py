@@ -9,6 +9,8 @@ class FoodTruckModel(models.Model):
     # more food truck parameters here
     location = models.CharField(max_length=200, help_text='Enter food truck location', null = True, blank = True)
     menu = models.ImageField(null = True)
+    lat = models.FloatField(null = True)
+    lon = models.FloatField(null = True)
 
 class UserModel(models.Model):
     name = models.CharField(max_length=100)

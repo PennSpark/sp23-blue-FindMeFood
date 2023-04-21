@@ -16,10 +16,12 @@ export default function AddFoodTruck() {
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
     const [menu, setMenu] = useState('');
+    const [lat, setLat] = useState('');
+    const [lon, setLon] = useState('');
     const [data, setData] = useState([]);
 
     const handleSubmitFoodTruck = async () => {
-      const formData = { name, location, menu };
+      const formData = { name, location, menu, lat, lon };
       const response = await postFormData('/post-foodtruck/', formData);
       console.log(response)
       if (response && response.status === 'success') {
@@ -27,6 +29,8 @@ export default function AddFoodTruck() {
         setName('');
         setLocation('');
         setMenu(image);
+        setLat();
+        setLong();
         fetchDataFoodTruck();
       } else {
         alert('Form submission failed. Please try again.');
@@ -99,6 +103,18 @@ export default function AddFoodTruck() {
             style={Styles.input}
             value={location}
             onChangeText={setLocation}
+          />
+          <Text style={Styles.label}>Latitude:</Text>
+          <TextInput
+            style={Styles.input}
+            value={lat}
+            onChangeText={setLat}
+          />
+          <Text style={Styles.label}>Longitude:</Text>
+          <TextInput
+            style={Styles.input}
+            value={lon}
+            onChangeText={setLon}
           />
           <Text style={Styles.label}>Menu:</Text>
           <Button style={Styles.upload_btn} title="Pick an image from camera roll" onPress={pickImage} />

@@ -39,9 +39,10 @@ def post_foodtruck(request):
         name = data.get('name')
         location = data.get('location')
         menu = data.get('menu')
-        print(name, location, menu)
-        if name and location and menu:
-            FoodTruckModel.objects.create(name=name, location=location, menu=menu)
+        lat = data.get('lat')
+        lon = data.get('lon')
+        if name and location and menu and lat and lon:
+            FoodTruckModel.objects.create(name=name, location=location, menu=menu, lat=lat, lon=lon)
             return JsonResponse({'status': 'success'})
         else:
             return JsonResponse({'status': 'error'})

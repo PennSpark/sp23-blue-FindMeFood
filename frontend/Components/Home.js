@@ -23,12 +23,21 @@ export default function Home() {
 
     const fetchDataFoodTruck = async () => {
       const response = await getFormData('/get-foodtruck/');
+      console.log(response);
       if (response && Array.isArray(response)) {
         setData(response);
+        const foodTrucksData = response.map(foodTruck => ({
+          id: +foodTruck.name,
+          name: foodTruck.name,
+          latitude: foodTruck.lat,
+          longitude: foodTruck.lon,
+        }));
+        setFoodTrucks(foodTrucksData);
       }
     };
 
     useEffect(() => {
+
       (async () => {
         const { granted } = await requestForegroundPermissionsAsync();
   
@@ -52,26 +61,22 @@ export default function Home() {
         }
       })();
 
+    }, []);
+
+    useEffect(() => {
       fetchDataFoodTruck();
 
-      const foodTrucksData = [
-        { id: 1, name: "Lyn's", latitude: 39.950350, longitude: -75.196970 },
-      ];
-      setFoodTrucks(foodTrucksData);
+      // FOR SOME REASON THE FOODTRUCKSDATA IS BLANK
+      
 
 
       /* 
       
-      ALSO MAKE THE MAP SO IT DOESN'T INSTANTLY FOLLOW USER LOCATION
+      ISSUE: MARKERS ARE NOT SHOWING ON MAP
 
-      TO ADD, YOU WILL HAVE TO RESTRUCTURE DATABASE
-
-      const foodTrucksData = data.map(foodTruck => ({
-        id: foodTruck.id,
-        name: foodTruck.name,
-        latitude: foodTruck.latitude,
-        longitude: foodTruck.longitude,
-      }));
+      const foodTrucksData = [
+        { id: 1, name: "Lyn's", latitude: 39.950350, longitude: -75.196970 },
+      ];
       */
 
     }, []);
